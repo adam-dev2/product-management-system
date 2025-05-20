@@ -1,4 +1,3 @@
-```markdown
 # 🛒 Product Management System
 
 A full-stack product management application with secure authentication, built using **Node.js**, **Express**, **MongoDB**, and **Mongoose**.
