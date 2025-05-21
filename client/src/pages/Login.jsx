@@ -104,7 +104,7 @@ export default function Login() {
 
         <p className="text-center mt-4 text-gray-200">
           Don't have an account?
-          <a href="/signup" className="hover:text-gray-500 underline pl-2">Create one</a>
+          <a href="/" className="hover:text-gray-500 underline pl-2">Create one</a>
         </p>
 
         {errors.apiError && (
