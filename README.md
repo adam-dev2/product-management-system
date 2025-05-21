@@ -1,77 +1,93 @@
-# Vite + React + Tailwind CSS Project
+# Backend Intern Assignment ✅
 
-This project is set up using **Vite** as the build tool, with **React** and **Tailwind CSS** integrated using their official plugins.
-
-## Features
-
-- ⚡️ **Vite** – Fast and lightweight build tool
-- ⚛️ **React** – Frontend library for building user interfaces
-- 🎨 **Tailwind CSS** – Utility-first CSS framework
-- 🔌 **Plugin Configuration** – React and Tailwind CSS plugins are properly set up via `vite.config.js`
-
-## Vite Configuration
-
-The `vite.config.js` file includes:
-
-```js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react()
-  ],
-})
-````
-
-## Getting Started
-
-### Installation
-
-```bash
-npm install
-# or
-yarn install
-```
-
-### Development
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-### Build
-
-```bash
-npm run build
-# or
-yarn build
-```
-
-## Folder Structure
-
-Typical folders you might expect:
-
-* `src/` – Source files
-* `public/` – Static assets
-* `vite.config.js` – Vite configuration
-* `tailwind.config.js` – Tailwind CSS configuration
-* `postcss.config.js` – PostCSS plugins setup
-
-## Requirements
-
-* Node.js >= 16.x
-* npm or yarn
+This repository contains the completed solution for the Backend Intern Assignment. The assignment was completed within the 24-hour deadline and includes all the required tasks:
 
 ---
 
-This setup provides a solid foundation for building fast and modern frontend applications.
+## 🚀 Tech Stack
 
-```
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Frontend**: HTML, CSS, JavaScript
+- **Authentication**: JWT-based auth system
+- **Hosting**:
+  - Frontend: Vercel / Netlify (link below)
+  - Backend: Railway (link below)
 
-Let me know if you want to include a preview image, deployment instructions, or GitHub repo badges!
-```
+---
+
+## ✅ Task 1 (50 Points): Products API
+
+A RESTful API built with **Express.js** and **MongoDB** for managing a product catalog.
+
+### 📦 Product Schema
+
+| Field        | Type    | Required | Notes                        |
+|--------------|---------|----------|------------------------------|
+| `productId`  | String  | ✅       | Unique identifier            |
+| `name`       | String  | ✅       | Product name                 |
+| `price`      | Number  | ✅       | Product price                |
+| `featured`   | Boolean | ❌       | True for featured products   |
+| `rating`     | Decimal | ❌       | Product rating               |
+| `createdAt`  | Date    | ✅       | Date of creation             |
+| `company`    | String  | ✅       | Company name                 |
+
+### ✅ Endpoints Implemented
+
+1. `POST /api/products` – Add a product
+2. `GET /api/products` – Get all products
+3. `PUT /api/products/:id` – Update a product
+4. `DELETE /api/products/:id` – Delete a product
+5. `GET /api/products/featured` – Get featured products
+6. `GET /api/products/price?max=VALUE` – Products with price less than VALUE
+7. `GET /api/products/rating?min=VALUE` – Products with rating greater than VALUE
+
+### 🔒 Authentication
+
+- Only **authenticated users** can perform CRUD operations.
+- Implemented using **JWT tokens**.
+- Routes are protected with auth middleware.
+
+---
+
+## ✅ Task 2 (25 Points): Frontend App
+
+A minimal responsive UI built using **HTML/CSS/JavaScript** to interact with the backend API.
+
+### 🧾 Features
+
+- **Product Listing Page**: Lists all products with details
+- **Add Product Form**: Validates required fields and input types
+  - Name: Required
+  - Price: Numeric only
+  - Company: Required
+- **Login and Signup Pages**: Allow users to register and log in
+- **Authenticated API Interaction**: Tokens stored and sent with requests
+
+---
+
+## ✅ Task 3 (25 Points): Deployment
+
+Both the frontend and backend are successfully hosted on free hosting platforms.
+
+- 🔗 **Live Frontend URL**: [View Frontend App](https://product-management-system-lt4y.vercel.app/products)
+- 🔗 **Live Backend URL**: [View API Server](https://product-management-system-jb0f.onrender.com)
+
+---
+
+## 📂 Submission
+
+- 🗃 **GitHub Repo**: [View Code on GitHub](https://github.com/your-username/backend-intern-assignment)
+- 🌐 **Live Frontend App**: https://product-management-system-lt4y.vercel.app/products
+- 🖥 **Live API Server**: https://product-management-system-jb0f.onrender.com
+
+---
+
+## 🧑‍💻 Author
+
+- **Name**: [Adam]
+- **Email**: shaikadam252@gmail.com
+- **LinkedIn**: (https://www.linkedin.com/in/shaik-adam-222328230/)
+
+---
+
+> ✅ This project fulfills all tasks and criteria outlined in the assignment instructions.
