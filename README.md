@@ -1,116 +1,77 @@
-# 🛒 Product Management System
+# Vite + React + Tailwind CSS Project
 
-A full-stack product management application with secure authentication, built using **Node.js**, **Express**, **MongoDB**, and **Mongoose**.
+This project is set up using **Vite** as the build tool, with **React** and **Tailwind CSS** integrated using their official plugins.
 
----
+## Features
 
-## ✅ Project Status
+- ⚡️ **Vite** – Fast and lightweight build tool
+- ⚛️ **React** – Frontend library for building user interfaces
+- 🎨 **Tailwind CSS** – Utility-first CSS framework
+- 🔌 **Plugin Configuration** – React and Tailwind CSS plugins are properly set up via `vite.config.js`
 
-> **Backend Development: Completed**
+## Vite Configuration
 
-- ✅ Schema design with validation (`Product`, `User`)
-- ✅ Authentication implemented (Signup / Login with JWT)
-- ✅ Auth middleware to protect CRUD routes
-- ✅ Folder structure organized (MVC pattern)
-- ✅ Routes created for product and user management
+The `vite.config.js` file includes:
 
----
+```js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-## 📁 Folder Structure (Backend)
-
-```
-
-server/
-├── controllers/
-│   ├── authController.js
-│   └── productController.js
-├── models/
-│   ├── Product.js
-│   └── User.js
-├── routes/
-│   ├── authRoutes.js
-│   └── productRoutes.js
-├── middleware/
-│   └── authMiddleware.js
-├── config/
-│   └── db.js
-├── .env
-├── .gitignore
-├── server.js
-└── package.json
-
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+    react()
+  ],
+})
 ````
 
----
+## Getting Started
 
-## 🔐 Authentication
-
-- JWT-based signup and login
-- Passwords hashed with **bcrypt**
-- Protected product routes via auth middleware
-
----
-
-## 🧪 Current API Endpoints
-
-| Method | Endpoint                         | Description                    |
-|--------|----------------------------------|--------------------------------|
-| POST   | `/api/auth/signup`               | Register a new user           |
-| POST   | `/api/auth/login`                | Login and receive token       |
-| POST   | `/api/products`                  | Add a new product *(auth)*    |
-| GET    | `/api/products`                  | Get all products              |
-| PUT    | `/api/products/:id`              | Update a product *(auth)*     |
-| DELETE | `/api/products/:id`              | Delete a product *(auth)*     |
-| GET    | `/api/products/featured`         | Fetch featured products       |
-| GET    | `/api/products/price/:max`       | Fetch products by price limit |
-| GET    | `/api/products/rating/:min`      | Fetch products by rating      |
-
----
-
-## 🛠️ Tech Stack
-
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB, Mongoose
-- **Authentication:** JWT, bcryptjs
-- **Dev Tools:** Postman, VS Code
-
----
-
-## 🚧 Upcoming (Frontend)
-
-- Product list UI
-- Add product form with validations
-- Signup/Login pages
-- Frontend-backend integration
-
----
-
-## 📦 Setup (Backend)
+### Installation
 
 ```bash
-cd server
 npm install
+# or
+yarn install
+```
+
+### Development
+
+```bash
 npm run dev
-````
-
-Create a `.env` file with:
-
+# or
+yarn dev
 ```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+
+### Build
+
+```bash
+npm run build
+# or
+yarn build
 ```
+
+## Folder Structure
+
+Typical folders you might expect:
+
+* `src/` – Source files
+* `public/` – Static assets
+* `vite.config.js` – Vite configuration
+* `tailwind.config.js` – Tailwind CSS configuration
+* `postcss.config.js` – PostCSS plugins setup
+
+## Requirements
+
+* Node.js >= 16.x
+* npm or yarn
 
 ---
 
-## 📌 Note
+This setup provides a solid foundation for building fast and modern frontend applications.
 
-This project is part of a full-stack assignment with 3 main tasks. Backend is fully complete and frontend work is in progress.
+```
 
----
-
-## 📚 License
-
-This project is open-source and free to use.
-
+Let me know if you want to include a preview image, deployment instructions, or GitHub repo badges!
 ```
