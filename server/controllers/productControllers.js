@@ -12,14 +12,16 @@ exports.getAllProducts = async(req,res) => {
     }
 }
 
-exports.createProduct = async(req,res) => {
-    try {
-        const product = await Product.create(req.body); 
-        res.status(201).json(product);
-    } catch (error) {
-        res.status(400).json({ message: "Error while creating Product", error });
-    }
-}
+exports.createProduct = async (req, res) => {
+  try {
+    const product = await Product.create({ ...req.body, userId: req.user.id });
+    console.log(product)
+    res.status(201).json(product);
+  } catch (error) {
+    res.status(500).json({ message: "Error while creating Product", error });
+  }
+};
+
 
 exports.editProduct = async(req,res) => {
     const {id} = req.params;

@@ -12,10 +12,10 @@ exports.signup = async (req,res)=>{
         }
 
         const hashedPassword = await bcrypt.hash(password,10);
-        const newUser = new User({fullname, email,password: hashedPassword})
+        const newUser = new User({email,password: hashedPassword})
 
         await newUser.save();
-        return res.status(200).json({message: 'Succesfully created User',user: newUser.fullname});
+        return res.status(200).json({message: 'Succesfully created User',user: newUser.email});
     }catch(err) {
         return res.status(500).json({message: `Error while creating user: ${err}`});
     }
@@ -40,7 +40,7 @@ exports.login = async(req,res)=>{
             {expiresIn: '1h'}
         );
 
-        return res.status(200).json({message: "Login sucessfully",token,user:findUser.fullname});
+        return res.status(200).json({message: "Login sucessfully",token,user:findUser.email});
     }catch(err) {
         return res.status(500).json({message: 'Error while Loging user'});
     }

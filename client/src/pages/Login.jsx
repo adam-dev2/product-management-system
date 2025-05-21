@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
-
+  const navigate = useNavigate();
 
   const validate = () => {
     const errs = {};
@@ -15,35 +17,43 @@ export default function Login() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  const errs = validate();
-  if (Object.keys(errs).length === 0) {
-    try {
-      const response = await fetch('http://localhost:5001/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length === 0) {
+      try {
+        const response = await fetch("http://localhost:5001/api/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email, password })
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (!response.ok) {
-        setErrors({ apiError: data.message || 'Login failed' });
-        setSuccess("");
-      } else {
-        setErrors({});
-        setSuccess("Login successful!");
-        localStorage.setItem('token', data.token);
-        console.log('Login successful:', data);
+        if (!response.ok) {
+          setErrors({ apiError: data.message || "Login failed" });
+          setSuccess("");
+        } else {
+          const { token } = data;
+          const decoded = jwtDecode(token);
+          const userId = decoded.id;
+
+          localStorage.setItem("token", token);
+          localStorage.setItem("userId", userId);
+
+          setErrors({});
+          setSuccess("Login successful!");
+          console.log("Login successful:", data);
+          navigate("/products");
+        }
+      } catch (error) {
+        setErrors({ apiError: "Network error. Please try again." });
       }
-    } catch (error) {
-      setErrors({ apiError: 'Network error. Please try again.' });
+    } else {
+      setErrors(errs);
     }
-  } else {
-    setErrors(errs);
-  }
-};
-
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-6">
@@ -91,14 +101,18 @@ export default function Login() {
         >
           Login
         </button>
-      <p className="text-center mt-4 text-gray-200">Don't have an account?<a href="/signup" className="hover:text-gray-500 underline pl-2">create one</a></p>
+
+        <p className="text-center mt-4 text-gray-200">
+          Don't have an account?
+          <a href="/signup" className="hover:text-gray-500 underline pl-2">Create one</a>
+        </p>
+
         {errors.apiError && (
-            <p className="text-red-500 text-center mt-4">{errors.apiError}</p>
+          <p className="text-red-500 text-center mt-4">{errors.apiError}</p>
         )}
         {success && (
-            <p className="text-green-500 text-center mt-4">{success}</p>
+          <p className="text-green-500 text-center mt-4">{success}</p>
         )}
-
       </form>
     </div>
   );
