@@ -114,8 +114,3 @@ This project is part of a full-stack assignment with 3 main tasks. Backend is fu
 This project is open-source and free to use.
 
 ```
-
----
-
-Let me know if you want this README split into **backend/frontend** sections later as you progress. I can also help you generate a second version once you deploy.
-```
