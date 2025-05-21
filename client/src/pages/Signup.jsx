@@ -20,7 +20,7 @@ export default function Signup() {
 
     if (Object.keys(errs).length === 0) {
       try {
-        const response = await fetch("http://localhost:5001/api/auth/signup", {
+        const response = await fetch("https://product-management-system-jb0f.onrender.com/api/auth/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),

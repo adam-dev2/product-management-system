@@ -34,7 +34,7 @@ const AddProduct = ({ onClose }) => {
 
     try {
       await axios.post(
-        "http://localhost:5001/api/products/",
+        "https://product-management-system-jb0f.onrender.com/api/products/",
         {
           ...formData,
           userId,

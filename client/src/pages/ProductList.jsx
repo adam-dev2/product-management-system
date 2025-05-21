@@ -15,7 +15,7 @@ export default function ProductList() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5001/api/products", {
+      const res = await fetch("https://product-management-system-jb0f.onrender.com/api/products", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

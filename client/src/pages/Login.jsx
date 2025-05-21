@@ -21,7 +21,7 @@ export default function Login() {
     const errs = validate();
     if (Object.keys(errs).length === 0) {
       try {
-        const response = await fetch("http://localhost:5001/api/auth/login", {
+        const response = await fetch("https://product-management-system-jb0f.onrender.com/api/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
